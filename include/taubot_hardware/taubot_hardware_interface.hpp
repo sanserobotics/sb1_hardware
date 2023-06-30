@@ -71,8 +71,8 @@ private:
 
   SerialComms comms;
   std::chrono::time_point<std::chrono::system_clock> time_;
-  float pid_kp = 18;
-  float pid_ki = 1.5;
+  float pid_kp = 4.0;
+  float pid_ki = 0.3;
   float pid_kd = 0.5;
 
 
