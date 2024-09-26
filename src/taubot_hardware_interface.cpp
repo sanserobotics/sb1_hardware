@@ -94,10 +94,10 @@ hardware_interface::CallbackReturn TaubotHardwareInterface::on_init(
     }
   }
 
-// open the serial port at /dev/ttyS0
+// open the serial port at /dev/ttyAMA0
   time_ = std::chrono::system_clock::now();
 
-  std::string uart_str("/dev/ttyS0");
+  std::string uart_str("/dev/ttyAMA0");
   comms.setup(uart_str); 
   if(!comms.connected())
   {   
@@ -177,7 +177,7 @@ hardware_interface::CallbackReturn TaubotHardwareInterface::on_activate(
      return hardware_interface::CallbackReturn::ERROR;
   }
   comms.sendMsg(msg, sizeof(msg));
-  RCLCPP_INFO(rclcpp::get_logger("TaubotHardwareInterface"), "Serial write %s to ttyS0 .........", msg);
+  RCLCPP_INFO(rclcpp::get_logger("TaubotHardwareInterface"), "Serial write %s to /dev/ttyAMA0 .........", msg);
 
   return hardware_interface::CallbackReturn::SUCCESS;
 }
@@ -288,7 +288,7 @@ hardware_interface::return_type taubot_hardware ::TaubotHardwareInterface::write
      printf("Serial connection error");
   }
   comms.sendMsg(msg, sizeof(msg));
-  RCLCPP_INFO(rclcpp::get_logger("TaubotHardwareInterface"), "Serial write %s to ttyS0", msg);
+  RCLCPP_INFO(rclcpp::get_logger("TaubotHardwareInterface"), "Serial write %s to /dev/ttyAMA0", msg);
 
   return hardware_interface::return_type::OK;
 }
